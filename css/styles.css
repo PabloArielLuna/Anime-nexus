@@ -222,7 +222,8 @@ text-align: center;
     max-width: 100vw;
     width: 100%;
     justify-content: center;
-    margin: 0 auto;
+    margin: 2rem auto;
+    box-sizing: border-box;
 }
 
 .character-card {
@@ -445,11 +446,16 @@ footer {
     }
 
     .catalog {
-        padding: 1rem;
+        padding: 0.5rem;
+        margin: 1rem auto;
     }
 
     .character-image {
         height: 200px;
+    }
+
+    .character-card {
+        height: auto; 
     }
 
     .character-name {
