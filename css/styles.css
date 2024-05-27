@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .encabezado, .banner, .titulo-pagina, .logo {
@@ -46,6 +47,7 @@ nav {
     padding: 10px;
     background: #3b226d;
     color: white;
+    flex-wrap: wrap;
 }
 
 .menu-toggle {
@@ -168,7 +170,7 @@ main.pagina-registro {
 
 
 .welcome-article {
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     align-items: center;
@@ -176,6 +178,8 @@ main.pagina-registro {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .welcome-article .text-container {
@@ -187,9 +191,23 @@ main.pagina-registro {
     justify-content: center;
 }
 
-.welcome-article .welcome-image {
+.text-container {
+    flex: 1;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.image-container {
+    flex: 1;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.welcome-image {
     width: 100%;
-    max-width: 30vw;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 h2 {
@@ -204,6 +222,7 @@ text-align: center;
     max-width: 1200px;
     width: 100%;
     justify-content: center;
+    margin: 0 auto;
 }
 .character-card {
     background-color: #e1e5e8;
@@ -309,6 +328,24 @@ button[type="submit"]:hover {
     background: #555;
 }
 
+.map-container {
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; /* Aspect ratio 16:9 (divide 9 by 16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.iframe-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 footer {
     background: #3b226d;
     color: white;
@@ -372,6 +409,16 @@ footer {
     nav #menu li a {
         padding: 10px;
         width: 100%;
+    }
+
+    .text-container, .image-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .welcome-article {
+        flex-direction: column;
+        text-align: center;
     }
 
     .radio-group,
