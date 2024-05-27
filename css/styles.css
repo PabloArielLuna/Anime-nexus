@@ -1,9 +1,16 @@
+/* General Styles */
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Previene el desbordamiento horizontal */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 .encabezado, .banner, .titulo-pagina, .logo {
@@ -13,6 +20,7 @@ body {
 
 .encabezado {
     position: relative;
+    display: flex;
     align-items: center;
 }
 
@@ -35,9 +43,9 @@ body {
     font-size: 3.5vw;
     position: absolute; 
     top: 50%; 
-    left: 25%; 
+    left: 50%; 
     transform: translate(-50%, -50%); 
-   font-family:Cambria;
+    font-family: Cambria;
 }
 
 nav {
@@ -65,6 +73,8 @@ nav {
     justify-content: space-around;
     margin: 0;
     padding: 0;
+    width: 100%;
+    max-width: 1200px;
 }
 
 nav ul li {
@@ -90,6 +100,7 @@ main {
     justify-content: center;
     align-items: center;
     background: #e0e0e0;
+    flex-direction: column; /* Asegura que el contenido se centre */
 }
 
 main.pagina-registro {
@@ -168,36 +179,19 @@ main.pagina-registro {
     object-fit: cover; 
 }
 
-
 .welcome-article {
     display: flex;
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column; /* Cambiar a columna para evitar desbordamientos */
     gap: 20px;
     align-items: center;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
-.welcome-article .text-container {
-    text-align: left;
-}
-
+.welcome-article .text-container,
 .welcome-article .image-container {
-    display: flex;
-    justify-content: center;
-}
-
-.text-container {
-    flex: 1;
-    max-width: 600px;
-    padding: 20px;
-}
-
-.image-container {
     flex: 1;
     max-width: 600px;
     padding: 20px;
@@ -211,7 +205,7 @@ main.pagina-registro {
 }
 
 h2 {
-text-align: center;
+    text-align: center;
 }
 
 .catalog {
@@ -477,9 +471,9 @@ footer {
         height: 40px;
     }
 
-        .logo {
-            width: 60px; /* Tamaño más pequeño para el logo en móviles */
-        }
+    .logo {
+        width: 60px; /* Tamaño más pequeño para el logo en móviles */
+    }
 
     #menu li a {
         padding: 10px 5px;
@@ -508,6 +502,7 @@ footer {
     .character-description {
         font-size: 0.8rem;
     }
+
     .form-group input[type="text"],
     .form-group input[type="email"],
     .form-group input[type="password"],
@@ -516,10 +511,7 @@ footer {
     }
 }
 
-
 /* Estilos específicos para la sección de series */
-
-
 #series {
     display: flex;
     justify-content: center;
@@ -546,7 +538,7 @@ footer {
 }
 
 .serie figcaption {
-    font-family: Arial,sans-serif;
+    font-family: Arial, sans-serif;
     top: 0; 
     left: 0; 
     width: 100%; 
@@ -562,10 +554,8 @@ article {
     font-family: 'Montserrat', sans-serif;
     text-align: justify;
     background: #f7f9fa;
-    padding: 0%;
-
+    padding: 0;
 }
-
 
 h4 {
     font-family: 'Montserrat', sans-serif;
@@ -627,7 +617,6 @@ h5:hover {
     background-color: #555;
     color: white;
     cursor: pointer;
-    
 }
 
 #comments-container {
@@ -666,3 +655,4 @@ ul {
 ul li {
     text-align: justify;
 }
+
