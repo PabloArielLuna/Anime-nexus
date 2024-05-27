@@ -448,6 +448,10 @@ footer {
         height: 30vw; /* Ajusta la altura del carrusel para dispositivos móviles */
     }
 
+    .catalog {
+        padding: 0;
+    }
+
     .form-container {
         padding: 15px;
     }
