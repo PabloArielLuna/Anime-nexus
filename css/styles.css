@@ -218,7 +218,7 @@ text-align: center;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
-    padding: 2rem 2rem 2rem calc((100% - 1200px) / 2);
+    padding: 2rem;
     max-width: 1200px;
     width: 100%;
     justify-content: center;
@@ -421,6 +421,10 @@ footer {
         text-align: center;
     }
 
+    .carousel {
+        height: 25vw; /* Ajusta la altura del carrusel para dispositivos móviles */
+    }
+
     .radio-group,
     .checkbox-group {
         flex-direction: column;
@@ -438,6 +442,10 @@ footer {
 
     #menu li a {
         padding: 10px 5px;
+    }
+
+    .carousel {
+        height: 30vw; /* Ajusta la altura del carrusel para dispositivos móviles */
     }
 
     .form-container {
@@ -460,28 +468,28 @@ footer {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-  }
-  
-  .serie {
+}
+
+.serie {
     margin: 5px;
     width: 250px;
     border: 2px solid #ccc;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .serie img {
+}
+
+.serie img {
     width: 100%;
     height: auto;
     transition: transform 0.3s ease;
-  }
-  
-  .serie img:hover {
+}
+
+.serie img:hover {
     transform: scale(1.05);
-  }
-  
-  .serie figcaption {
+}
+
+.serie figcaption {
     font-family: Arial,sans-serif;
     top: 0; 
     left: 0; 
@@ -492,38 +500,38 @@ footer {
     padding: 8px; 
     box-sizing: border-box; 
     text-align: center;
-  }
-  
-  article {
+}
+
+article {
     font-family: 'Montserrat', sans-serif;
     text-align: justify;
     background: #f7f9fa;
     padding: 0%;
-  
-  }
-  
 
-  h4 {
+}
+
+
+h4 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-size: 24px; 
     transition: transform 0.3s ease-in-out;
-  }
+}
 
-  h5 {
+h5 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-size: 24px; 
     transition: transform 0.3s ease-in-out; 
-  }
+}
 
-  h4:hover {
+h4:hover {
     transform: scale(1.2); 
-  }
+}
 
-  h5:hover {
+h5:hover {
     transform: scale(1.2);
-  }
+}
 
 /* Estilos para la sección de comentarios */
 #comments-section {
