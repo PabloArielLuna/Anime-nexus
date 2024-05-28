@@ -4,7 +4,6 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden; /* Previene el desbordamiento horizontal */
 }
 
 *,
@@ -460,10 +459,24 @@ footer {
         font-size: 0.9rem;
     }
 
+    .contenedor-tarjeta {
+        width: 100%;
+    }
+
+    .contenedor-cancion {
+        padding: 1rem;
+    }
+
     .radio-group,
     .checkbox-group {
         flex-direction: column;
     }
+}
+
+.serie {
+    width: 100%; 
+    margin: 0; 
+    box-shadow: none; 
 }
 
 @media (max-width: 480px) {
@@ -502,6 +515,7 @@ footer {
     .character-description {
         font-size: 0.8rem;
     }
+
 
     .form-group input[type="text"],
     .form-group input[type="email"],
@@ -577,6 +591,41 @@ h4:hover {
 
 h5:hover {
     transform: scale(1.2);
+}
+
+
+/* Contenedor principal para todas las canciones */
+.contenedor-cancion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* Espacio entre las tarjetas */
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cada tarjeta individual de canción */
+.contenedor-tarjeta {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 300px;
+}
+
+/* Efecto hover para las tarjetas */
+.contenedor-tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Iframe de la canción */
+.contenedor-tarjeta iframe {
+    width: 100%;
+    border: none;
 }
 
 /* Estilos para la sección de comentarios */
@@ -655,4 +704,5 @@ ul {
 ul li {
     text-align: justify;
 }
+
 
