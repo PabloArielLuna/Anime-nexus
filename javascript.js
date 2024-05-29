@@ -1,87 +1,87 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const carouselInner = document.getElementById('carousel-inner');
-    const carouselItems = carouselInner.querySelectorAll('.carousel-item');
-    const prevButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
-    let currentIndex = 0;
+    const carruselInterno = document.getElementById('carrusel-interno');
+    const carruselItems = carruselInterno.querySelectorAll('.carrusel-item');
+    const botonPrev = document.getElementById('prev');
+    const botonSig = document.getElementById('sig');
+    let indiceActual = 0;
 
-    function updateCarousel() {
-        const carouselItemWidth = carouselItems[0].offsetWidth;
-        const offset = -currentIndex * carouselItemWidth;
-        carouselInner.style.transform = `translateX(${offset}px)`;
+    function actualizarCarrusel() {
+        const anchoItemCarrusel = carruselItems[0].offsetWidth;
+        const desplazamiento = -indiceActual * anchoItemCarrusel;
+        carruselInterno.style.transform = `translateX(${desplazamiento}px)`;
     }
 
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselItems.length - 1;
-        updateCarousel();
+    botonPrev.addEventListener('click', () => {
+        indiceActual = (indiceActual > 0) ? indiceActual - 1 : carruselItems.length - 1;
+        actualizarCarrusel();
     });
 
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex < carouselItems.length - 1) ? currentIndex + 1 : 0;
-        updateCarousel();
+    botonSig.addEventListener('click', () => {
+        indiceActual = (indiceActual < carruselItems.length - 1) ? indiceActual + 1 : 0;
+        actualizarCarrusel();
     });
 
     // Initialize the carousel
-    updateCarousel();
+    actualizarCarrusel();
 });
 
-function toggleMenu() {
+function alternarMenu() {
     const menu = document.getElementById('menu');
-    menu.classList.toggle('show');
+    menu.classList.toggle('mostrar');
 }
 
 
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.getElementById('form-registro').addEventListener('submit', function(evento) {
+    evento.preventDefault();
 
-    const username = document.getElementById('username').value;
+    const usuario = document.getElementById('usuario').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
+    const confirmarPassword = document.getElementById('confirmarPassword').value;
     const dob = document.getElementById('dob').value;
-    const gender = document.querySelector('input[name="gender"]:checked');
-    const interests = document.querySelectorAll('input[name="interests"]:checked');
+    const genero = document.querySelector('input[name="genero"]:checked');
+    const intereses = document.querySelectorAll('input[name="intereses"]:checked');
 
-    const formData = new FormData(event.target);
+    const formDatos = new FormData(evento.target);
 
-    const data = {};
-    formData.forEach((value, key) => {
-        data[key] = value;
+    const datos = {};
+    formDatos.forEach((valor, clave) => {
+        datos[clave] = valor;
     });
 
     // Validaciones
-    if (!validateUsername(username)) {
+    if (!validarUsuario(usuario)) {
         alert('El nombre de usuario debe tener al menos 3 caracteres.');
         return;
     }
 
-    if (!validateEmail(email)) {
+    if (!validarEmail(email)) {
         alert('Por favor, ingresa un correo electrónico válido.');
         return;
     }
 
-    if (!validatePassword(password)) {
+    if (!validarPassword(password)) {
         alert('La contraseña debe tener al menos 6 caracteres.');
         return;
     }
 
-    if (password !== confirmPassword) {
+    if (password !== confirmarPassword) {
         alert('Las contraseñas no coinciden.');
         return;
     }
 
-    if (!validateDob(dob)) {
+    if (!validarDob(dob)) {
         alert('Por favor, ingresa una fecha de nacimiento válida.');
         return;
     }
 
-    if (!gender) {
+    if (!genero) {
         alert('Por favor, selecciona tu género.');
         return;
     }
 
-    if (interests.length === 0) {
+    if (intereses.length === 0) {
         alert('Por favor, selecciona al menos un interés.');
         return;
     }
@@ -90,63 +90,63 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     window.location.href = 'index.html'; // Redirige al usuario después del registro
 })
 
-function validateUsername(username) {
-    return username.length >= 3;
+function validarUsuario(usuario) {
+    return usuario.length >= 3;
 }
 
-function validateEmail(email) {
+function validarEmail(email) {
     const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return re.test(email);
 }
 
-function validatePassword(password) {
+function validarPassword(password) {
     return password.length >= 6;
 }
 
-function validateDob(dob) {
-    const today = new Date();
-    const birthDate = new Date(dob);
-    return birthDate < today;
+function validarDob(dob) {
+    const hoy = new Date();
+    const fechaNacimiento = new Date(dob);
+    return fechaNacimiento < hoy;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirmPassword');
-    const togglePasswordButton = document.getElementById('togglePassword');
-    const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
-    const eyeIcon = document.getElementById('eyeIcon');
-    const eyeIconConfirm = document.getElementById('eyeIconConfirm');
+    const confirmarPasswordInput = document.getElementById('confirmarPassword');
+    const botonAlternarPassword = document.getElementById('alternarPassword');
+    const botonAlternarConfirmarPassword = document.getElementById('alternarConfirmarPassword');
+    const iconoOjo = document.getElementById('icono-ojo');
+    const confirmarIconoOjo = document.getElementById('confirmar-icono-ojo');
 
-    togglePasswordButton.addEventListener('click', function () {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        eyeIcon.classList.toggle('fa-eye');
-        eyeIcon.classList.toggle('fa-eye-slash');
+    botonAlternarPassword.addEventListener('click', function () {
+        const tipo = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', tipo);
+        iconoOjo.classList.toggle('fa-eye');
+        iconoOjo.classList.toggle('fa-eye-slash');
     });
 
-    toggleConfirmPasswordButton.addEventListener('click', function () {
-        const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        confirmPasswordInput.setAttribute('type', type);
-        eyeIconConfirm.classList.toggle('fa-eye');
-        eyeIconConfirm.classList.toggle('fa-eye-slash');
+    botonAlternarConfirmarPassword.addEventListener('click', function () {
+        const tipo = confirmarPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmarPasswordInput.setAttribute('type', tipo);
+        confirmarIconoOjo.classList.toggle('fa-eye');
+        confirmarIconoOjo.classList.toggle('fa-eye-slash');
     });
 });
 
 /*Comentarios*/
-const commentForm = document.getElementById('comment-form');
-const commentInput = document.getElementById('comment-input');
-const commentsContainer = document.getElementById('comments-container');
+const formComentarios = document.getElementById('form-comentarios');
+const inputComentarios = document.getElementById('input-comentarios');
+const contenedorComentarios = document.getElementById('contenedor-comentarios');
 
-commentForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const commentText = commentInput.value;
+formComentarios.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+    const textoComentarios = inputComentarios.value;
     
-    if (commentText.trim() !== "") {
-        const commentElement = document.createElement('div');
-        commentElement.classList.add('comment');
-        commentElement.innerText = commentText;
-        commentsContainer.appendChild(commentElement);
-        commentInput.value = ""; // Limpiar el campo de texto
+    if (textoComentarios.trim() !== "") {
+        const elementoComentarios = document.createElement('div');
+        elementoComentarios.classList.add('comentario');
+        elementoComentarios.innerText = textoComentarios;
+        contenedorComentarios.appendChild(elementoComentarios);
+        inputComentarios.value = ""; // Limpiar el campo de texto
     }
 });
 
