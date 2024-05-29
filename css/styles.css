@@ -55,7 +55,7 @@ nav {
     flex-wrap: wrap;
 }
 
-.alternarMenu {
+.alternar-menu {
     display: none;
     padding: 10px;
     background: none;
@@ -425,7 +425,7 @@ footer {
         align-items: flex-start;
     }
 
-    nav .menu-toggle {
+    nav .alternar-menu {
         display: block;
     }
 
