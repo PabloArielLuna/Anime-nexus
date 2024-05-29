@@ -1,4 +1,4 @@
-
+/*-----carrusel-----*/
 document.addEventListener('DOMContentLoaded', () => {
     const carruselInterno = document.getElementById('carrusel-interno');
     const carruselItems = carruselInterno.querySelectorAll('.carrusel-item');
@@ -26,12 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrusel();
 });
 
+/*-----menú hamburguesa-----*/
 function alternarMenu() {
     const menu = document.getElementById('menu');
     menu.classList.toggle('mostrar');
 }
 
-
+/*-----validaciones registro-----*/
 document.getElementById('form-registro').addEventListener('submit', function(evento) {
     evento.preventDefault();
 
