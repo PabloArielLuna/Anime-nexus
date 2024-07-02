@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime Nexus</title>
+    <link rel="shortcut icon" href="static/imagenes/Anime_Nexus.jpg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <script src="Javascript.js" defer></script>
+</head>
+<body>
+    <header class="encabezado">
+        <div class="banner">
+            <h1 class="titulo-pagina"><i>Anime Nexus</i></h1>
+            <img src="static/imagenes/banner2.jpg" alt="Banner" />
+        </div>
+    </header>
+    <nav>
+        <button class="alternar-menu" onclick="alternarMenu()">☰</button>
+        <ul id="menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Página principal</a></li>
+            <li><a href="catalogo.html"><i class="fas fa-book"></i> Catálogo de personajes</a></li>
+            <li><a href="series.html"><i class="fas fa-tv"></i> Series y música</a></li>
+            <li><a href="registro.html"><i class="fas fa-user-plus"></i> Registro</a></li>
+            <li><a href="quienes.html"><i class="fas fa-users"></i> ¿Quiénes somos?</a></li>
+            <li><a href="nexus.html"><i class="fas fa-user-astronaut"></i> Crea tu avatar</a></li>
+        </ul>
+    </nav>
+    <div id="nexus-container">
+        <h2>Agregá tu avatar</h2><br>
+        <form id="formulario" enctype="multipart/form-data">
+            
+            <label for="nombre"><i class="fas fa-user"></i> Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+
+            <label for="descripcion"><i class="fas fa-info-circle"></i> Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" required><br>
+
+            <label for="edad"><i class="fas fa-birthday-cake"></i> Edad:</label>
+            <input type="number" id="edad" name="edad" required><br>
+
+            <label for="imagenAvatar"><i class="fas fa-image"></i> Imagen del avatar:</label>
+            <input type="file" id="imagenAvatar" name="imagen"><br>
+
+            <label for="creadorAvatar"><i class="fas fa-user-tag"></i> Creador del Avatar:</label>
+            <input type="text" id="creadorAvatar" name="creador" required><br>
+            
+            <button type="submit">Agregar Avatar</button>
+            <br>
+            <a href="nexus.html">Menu principal</a>
+        </form>
+    </div>
+
+    <script>
+        const URL = "https://anadataengineer.pythonanywhere.com/"; // Asegúrate de tener el http:// aquí
+
+        // Capturamos el evento de envío del formulario
+        document.getElementById('formulario').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evitamos que se envie el form
+            var formData = new FormData(this);
+
+            // Realizamos la solicitud POST al servidor
+            fetch(URL + '/avatar', {
+                method: 'POST',
+                body: formData // Aquí enviamos formData. Dado que formData puede contener archivos, no se utiliza JSON.
+            })
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Error al agregar el avatar.');
+                }
+            })
+            .then(function (data) {
+                alert('Avatar agregado correctamente.');
+            })
+            .catch(function (error) {
+                alert('Error al agregar el avatar.');
+            })
+            .finally(function () {
+                document.getElementById('nombre').value = "";
+                document.getElementById('descripcion').value = "";
+                document.getElementById('edad').value = "";
+                document.getElementById('imagenAvatar').value = "";
+                document.getElementById('creadorAvatar').value = "";
+            });
+        });
+    </script>
+</body>
+
+<footer>
+    <div class="pie-contenido">
+        <div class="pie-iconos">
+            <a href="mailto:anime@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Correo electrónico"><i class="fas fa-envelope" title="Correo electrónico"></i></a>
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" title="Twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" title="Instagram"></i></a>
+        </div>
+        <p>© 2024 Anime Nexus. Todos los derechos reservados.</p>
+    </footer>
+</html>
+
+

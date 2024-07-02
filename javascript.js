@@ -151,3 +151,58 @@ formComentarios.addEventListener('submit', (evento) => {
     }
 });
 
+// validar la entrada en tiempo real
+document.getElementById("usuario").addEventListener("input", function() {
+    var usuarioInput = this; // Almacenar el elemento de entrada del usuario en una variable
+    var usernameIcon = document.getElementById("username-icon"); // Obtener el icono asociado al nombre de usuario
+    // Verificar si el valor del campo de entrada del usuario está vacío o no
+    if (usuarioInput.value.trim().length > 0) {
+        // Si el valor no está vacío, agregar la clase "valid" y quitar la clase "invalid" para aplicar estilos adecuados
+        usuarioInput.classList.remove("invalid");
+        usuarioInput.classList.add("valid");
+        // Cambiar el icono a un check circle para indicar que el valor es válido
+        usernameIcon.classList.remove("fa-times-circle");
+        usernameIcon.classList.add("fa-check-circle");
+    } else {
+        // Si el valor está vacío, agregar la clase "invalid" y quitar la clase "valid" para aplicar estilos adecuados
+        usuarioInput.classList.remove("valid");
+        usuarioInput.classList.add("invalid");
+        // Cambiar el icono a un cross circle para indicar que el valor es inválido
+        usernameIcon.classList.remove("fa-check-circle");
+        usernameIcon.classList.add("fa-times-circle");
+    }
+});
+
+/*Imagen previa perfil*/
+document.getElementById('foto-perfil').addEventListener('change', function(event) {
+    var imagenPreview = document.getElementById('imagen-preview');
+    var archivo = event.target.files[0];
+    var lector = new FileReader();
+
+    lector.onload = function(e) {
+        imagenPreview.src = e.target.result;
+        imagenPreview.style.display = 'block'; // Muestra la imagen previa
+    };
+
+    if (archivo) {
+        lector.readAsDataURL(archivo);
+    } else {
+        imagenPreview.style.display = 'none';
+    }
+});
+
+
+/*-----contraseña-----*/
+document.getElementById('alternarPassword').addEventListener('click', function () {
+    const passwordInput = document.getElementById('password');
+    const icono = document.getElementById('icono-ojo');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icono.classList.remove('fa-eye-slash');
+        icono.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        icono.classList.remove('fa-eye');
+        icono.classList.add('fa-eye-slash');
+    }
+});

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime Nexus</title>
+    <link rel="shortcut icon" href="static/imagenes/Anime_Nexus.jpg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <script src="Javascript.js" defer></script>
+</head>
+<body>
+    <header class="encabezado">
+        <div class="banner">
+            <h1 class="titulo-pagina"><i>Anime Nexus</i></h1>
+            <img src="static/imagenes/banner2.jpg" alt="Banner" />
+        </div>
+    </header>
+    <nav>
+        <button class="alternar-menu" onclick="alternarMenu()">☰</button>
+        <ul id="menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Página principal</a></li>
+            <li><a href="catalogo.html"><i class="fas fa-book"></i> Catálogo de personajes</a></li>
+            <li><a href="series.html"><i class="fas fa-tv"></i> Series y música</a></li>
+            <li><a href="registro.html"><i class="fas fa-user-plus"></i> Registro</a></li>
+            <li><a href="quienes.html"><i class="fas fa-users"></i> ¿Quiénes somos?</a></li>
+            <li><a href="nexus.html"><i class="fas fa-user-astronaut"></i> Crea tu avatar</a></li>
+        </ul>
+    </nav>
+    <div id = "nexus-container">
+    <h2>Listado de Avatar</h2>
+    <table> <!-- Se crea una tabla para mostrar los productos. -->
+        <thead> <!--Encabezado de la tabla con columnas para código,descripción, cantidad, precio y acciones.-->
+
+            <tr>
+                <th><i class="fas fa-hashtag"></i> Código</th>
+                <th><i class="fas fa-user"></i> Nombre</th>
+                <th><i class="fas fa-info-circle"></i> Descripción</th>
+                <th align="right"><i class="fas fa-birthday-cake"></i> Edad</th>
+                <th><i class="fas fa-image"></i> Imagen</th>
+                <th align="right"><i class="fas fa-user-tag"></i> Creador</th>
+            </tr>
+        </thead>
+        <tbody id="tablaAvatar"> </tbody>
+    </table><br>
+
+    <div class="contenedor-centrado">
+        <a href="nexus.html">Menu principal</a>
+        
+    </div>
+    </div>
+    
+    <script>
+        const URL = "https://anadataengineer.pythonanywhere.com/"
+    // Al subir al servidor, deberá utilizarse la siguiente ruta.USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+    //const URL = "https://USUARIO.pythonanywhere.com/"
+    
+        // Realizamos la solicitud GET al servidor para obtener todos losproductos.
+            fetch(URL + '/avatar')
+                .then(function (response) {
+                    if (response.ok) {
+    //Si la respuesta es exitosa (response.ok), convierte el cuerpo de la respuesta de formato JSON a un objeto JavaScript y pasa estos datos a la siguiente promesa then.
+                        return response.json();
+                } else {
+    // Si hubo un error, lanzar explícitamente una excepción para ser "catcheada" más adelante
+
+                        throw new Error('Error al obtener los avatar.');
+                    }
+                })
+            //Esta función maneja los datos convertidos del JSON.
+                .then(function (data) {
+                    let tablaAvatar = document.getElementById('tablaAvatar'); //Selecciona el elemento del DOM donde se mostrarán los productos.
+
+                    // Iteramos sobre cada producto y agregamos filas a la tabla
+
+                    for (let avatar of data) {
+                        let fila = document.createElement('tr'); //Crea una nueva fila de tabla(<tr>) para cada producto.
+                        fila.innerHTML = '<td>' + avatar.codigo + '</td>' +
+                            '<td>' + avatar.nombre + '</td>' +
+                            '<td>' + avatar.descripcion + '</td>' +
+                            '<td align="right">' + avatar.edad +'</td>' + 
+                            // Mostrar miniatura de la imagen
+                            '<td><img src=https://www.pythonanywhere.com/user/anadataengineer/files/home/anadataengineer/mysite/static/imagenes/' + avatar.imagen_url +' alt="Imagen del avatar" style="width:100px;"></td>' + '<td align="right">' + avatar.creador + '</td>';
+                        //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+//'<td><img src=https://www.pythonanywhere.com/user/USUARIO/files/home/USUARIO/mysite/static/imagenes/' + producto.imagen_url +' alt="Imagen del producto"style="width: 100px;"></td>' + '<td align="right">' + producto.proveedor+ '</td>';
+//Una vez que se crea la fila con el contenido del producto, se agrega a la tabla utilizando el método appendChild del elemento tablaProductos.
+
+                        tablaAvatar.appendChild(fila);
+                    }
+                })
+//Captura y maneja errores, mostrando una alerta en caso de error al obtener los productos.
+                .catch(function (error) {
+                            // Código para manejar errores
+                    alert('Error al obtener los avatar.');
+                });
+        </script>
+
+
+    <footer>
+        <div class="pie-contenido">
+            <div class="pie-iconos">
+                <a href="mailto:anime@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Correo electrónico"><i class="fas fa-envelope" title="Correo electrónico"></i></a>
+                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter" title="Twitter"></i></a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" title="Instagram"></i></a>
+            </div>
+            <p>© 2024 Anime Nexus. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

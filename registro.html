@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anime Nexus</title>
-    <link rel="shortcut icon" href="imagenes/Anime_Nexus.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="static/imagenes/Anime_Nexus.jpg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
@@ -15,23 +15,24 @@
     <header class="encabezado">
         <div class="banner">
             <h1 class="titulo-pagina"><i>Anime Nexus</i></h1>
-            <img src="./imagenes/banner2.jpg" alt="Banner de Anime Nexus" />
+            <img src="static/imagenes/banner2.jpg" alt="Banner de Anime Nexus" />
         </div>
     </header>
     <nav>
         <button class="alternar-menu" onclick="alternarMenu()">☰</button>
         <ul id="menu">
-            <li><a href="index.html">Página principal</a></li>
-            <li><a href="catalogo.html">Catálogo de personajes</a></li>
-            <li><a href="series.html">Series y música</a></li>
-            <li><a href="registro.html">Registro</a></li>
-            <li><a href="quienes.html">¿Quiénes somos?</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Página principal</a></li>
+            <li><a href="catalogo.html"><i class="fas fa-book"></i> Catálogo de personajes</a></li>
+            <li><a href="series.html"><i class="fas fa-tv"></i> Series y música</a></li>
+            <li><a href="registro.html"><i class="fas fa-user-plus"></i> Registro</a></li>
+            <li><a href="quienes.html"><i class="fas fa-users"></i> ¿Quiénes somos?</a></li>
+            <li><a href="nexus.html"><i class="fas fa-user-astronaut"></i> Crea tu avatar</a></li>
         </ul>
     </nav>
     <main class="pagina-registro">
         <div class="contenedor-form">
             <h2><i class="fas fa-user-ninja"></i> Registro en Anime Nexus</h2>
-            <form id="form-registro">
+            <form id="form-registro" method="post">
                 <div class="grupo-form">
                     <label for="username"><i class="fas fa-user"></i> Nombre de Usuario:</label>
                     <input type="text" id="usuario" name="usuario" required="" />
@@ -94,7 +95,7 @@
                     <label for="foto-perfil"><i class="fas fa-image"></i> Foto de Perfil:</label>
                     <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*" required="" />
                 </div>
-                <button type="submit"><i class="fas fa-dragon"></i> Registrar</button>
+                <img id="imagen-preview" src="./static/imagenes/" alt="Vista previa de la imagen" style="display:none;">                
             </form>
         </div>
     </main>
@@ -110,5 +111,4 @@
     </footer>
 </body>
 </html>
-
 
